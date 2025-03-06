@@ -12,6 +12,7 @@ import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
 import server from "../enviornment";
+import { useNavigate } from "react-router-dom";
 const server_url = server;
 
 var connections = {};
@@ -51,6 +52,8 @@ export default function VideoMeetComponent() {
     let [username, setUsername] = useState("");
 
     const videoRef = useRef([]);
+
+    const navigate = useNavigate();
 
     let [videos, setVideos] = useState([]);
 
@@ -472,12 +475,27 @@ export default function VideoMeetComponent() {
         setScreen(!screen);
     };
 
+    // let handleEndCall = () => {
+    //     try {
+    //         let tracks = localVideoref.current.srcObject.getTracks();
+    //         tracks.forEach((track) => track.stop());
+    //     } catch (e) {}
+    //     window.location.href = "/home";
+    // };
+
     let handleEndCall = () => {
         try {
-            let tracks = localVideoref.current.srcObject.getTracks();
-            tracks.forEach((track) => track.stop());
-        } catch (e) {}
-        window.location.href = "/home";
+            if (localVideoref.current?.srcObject) {
+                let tracks = localVideoref.current.srcObject.getTracks();
+                tracks.forEach((track) => track.stop());
+            }
+        } catch (e) {
+            console.log("Error stopping tracks:", e);
+        }
+
+        setTimeout(() => {
+            navigate("/home"); // Use React Router's navigation
+        }, 500);
     };
 
     let openChat = () => {
