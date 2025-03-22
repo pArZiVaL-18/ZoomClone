@@ -5,9 +5,9 @@ import crypto from "crypto";
 import { Meeting } from "../models/meeting.model.js";
 
 const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, email, password } = req.body;
 
-    if (!username || !password) {
+    if (!username || !password || !email) {
         return res.status(400).json({ message: "Please provide" });
     }
 
@@ -37,8 +37,8 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-    const { name, username, password } = req.body;
-
+    const { name, username, email, password } = req.body;
+    console.log("in registerj controller", name, username, email, password);
     try {
         const existingUser = await User.findOne({ username });
         if (existingUser) {
@@ -49,9 +49,11 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        console.log("In register function ", username, email);
         const newUser = new User({
             name: name,
             username: username,
+            email: email,
             password: hashedPassword,
         });
 

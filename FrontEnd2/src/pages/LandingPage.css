@@ -1,4 +1,4 @@
-.landingPageContainer {
+/* .landingPageContainer {
     width: 100vw;
     height: 100vh;
     background: url("/background.png");
@@ -53,4 +53,250 @@
 .landingMainContainer > div:nth-child(2) img {
     height: 70vh;
     width: auto;
+} */
+
+
+
+.landing-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 1440px;
+    margin: 0 auto;
 }
+
+/* Header Styles */
+.landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: #555;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #0077B6;
+}
+
+.sign-up-btn {
+    background-color: #0077B6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sign-up-btn:hover {
+    background-color: #005b8c;
+}
+
+/* Main Content */
+.landing-content {
+    display: flex;
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-left {
+    flex: 1;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-left h2 {
+    font-size: 48px;
+    color: #333;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+.content-left h2 span {
+    display: block;
+    color: #0077B6;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.description {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background-color: #0077B6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.cta-button:hover {
+    background-color: #005b8c;
+}
+
+/* Right Content - Illustration */
+/* .content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration {
+    width: 100%;
+    max-width: 450px;
+}
+
+.illustration img {
+    width: 100%;
+    height: auto;
+    display: block;
+} */
+/* Right Content - Illustration */
+.content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.illustration {
+    width: 100%;
+    max-width: 500px; /* Adjust size for better visibility */
+    text-align: center;
+}
+
+.illustration img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px; /* Soft edges */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Responsive Design */
+@media (max-width: 980px) {
+    .content-right {
+        justify-content: center;
+    }
+
+    .illustration img {
+        max-width: 350px; /* Slightly smaller on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .content-right {
+        order: -1; /* Move illustration above text on small screens */
+        margin-bottom: 20px;
+    }
+
+    .illustration img {
+        max-width: 300px; /* Further reduce size for small screens */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 980px) {
+    .landing-content {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    
+    .content-left {
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .content-left h2 {
+        font-size: 36px;
+    }
+    
+    .cta-button {
+        align-self: center;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .landing-header {
+        padding: 15px;
+    }
+    
+    .sign-up-btn {
+        padding: 6px 15px;
+        font-size: 12px;
+    }
+    
+    .content-left h2 {
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+}
+/*New CSS for landing page from claude---------------------------------------------------*/
