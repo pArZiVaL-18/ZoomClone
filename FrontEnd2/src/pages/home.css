@@ -1,0 +1,476 @@
+/* .meetPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid #dadce0;
+}
+
+.logoSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoSection h2 {
+    color: #5f6368;
+    font-weight: 500;
+    margin: 0;
+}
+
+.userControls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.historyButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.mainContent {
+    display: flex;
+    flex: 1;
+    padding: 0 24px;
+}
+
+.leftContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 48px;
+    max-width: 600px;
+}
+
+.leftContent h1 {
+    font-size: 2.5rem;
+    color: #202124;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.leftContent p {
+    color: #5f6368;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+}
+
+.actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.newMeetingBtn {
+    align-self: flex-start !important;
+    background-color: #1a73e8 !important;
+    color: white !important;
+    font-weight: 500 !important;
+    padding: 10px 24px !important;
+    text-transform: none !important;
+    border-radius: 4px !important;
+}
+
+.joinSection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    padding: 4px 16px;
+}
+
+.joinSection .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+}
+
+.joinBtn {
+    color: #1a73e8 !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+}
+
+.learnMoreSection {
+    color: #5f6368;
+    font-size: 0.9rem;
+}
+
+.learnMoreSection a {
+    color: #1a73e8;
+    text-decoration: none;
+} */
+
+/* .rightContent {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; Needed for absolute positioning of half-circle
+}
+
+.infoCard {
+    max-width: 400px;
+    text-align: center;
+    background-color: #1a73e8; Ensures it stands out
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative; Allows .halfCircle to be placed relative to this
+    overflow: hidden; Prevents unwanted content overflow
+} */
+
+/* .infoCard h2 {
+    color: white;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.infoCard p {
+    color: white;
+    margin-bottom: 24px;
+} */
+
+/* Right-cornered blue half-circle */
+/* 
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 24px;
+}
+
+.activeDot {
+    color: #1a73e8;
+}
+
+.dot {
+    color: #dadce0;
+} */
+
+:root {
+    --primary-color: #2563eb;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --background-light: #f3f4f6;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+.meetPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Inter", "system-ui", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-light);
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logoContainer img {
+    height: 36px;
+    width: auto;
+}
+
+.logoSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoSection h2 {
+    color: var(--text-primary);
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+}
+
+.logoSection span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    margin-top: 2px;
+}
+
+.userControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbarActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navProfile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 24px;
+    transition: background-color 0.2s ease;
+}
+
+.navProfile:hover {
+    background-color: var(--background-light);
+}
+
+.navProfile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navProfile span {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.navActionButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    background-color: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navActionButton:hover {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+}
+
+.navActionButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.navActionButton.activeAction {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.mainContent {
+    display: flex;
+    flex: 1;
+    padding: 0 24px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    /* justify-content: space-evenly; */
+    gap: 60px;
+}
+
+.leftContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.leftContent h1 {
+    font-size: 2.75rem;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.leftContent p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.newMeetingBtn {
+    align-self: flex-start !important;
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 12px 24px !important;
+    text-transform: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.newMeetingBtn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3) !important;
+}
+
+.joinSection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: var(--white);
+}
+
+.joinSection .MuiOutlinedInput-root {
+    border-radius: 8px !important;
+}
+
+.joinSection .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+}
+
+.joinBtn {
+    color: var(--primary-color) !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+}
+
+.learnMoreSection {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.learnMoreSection a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.learnMoreSection a:hover {
+    color: #1e40af;
+}
+
+.rightContent {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoCard {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), #4338ca);
+    padding: 32px 24px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) scale(0.95);
+    transition: transform 0.4s ease;
+}
+
+.infoCard:hover {
+    transform: perspective(1000px) rotateX(0) rotateY(0) scale(1);
+}
+
+.infoCard h2 {
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.infoCard p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 24px;
+}
+
+.activeDot {
+    color: var(--white);
+}
+
+.dot {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mainContent {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .leftContent,
+    .rightContent {
+        max-width: 100%;
+    }
+
+    .leftContent h1 {
+        font-size: 2.25rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navBar {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .logoContainer {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .userControls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

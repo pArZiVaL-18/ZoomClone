@@ -4,6 +4,7 @@ import mongoose, { mongo } from "mongoose";
 import cors from "cors";
 import connectToSocket from "./controllers/socketManager.js";
 import userRoutes from "./routes/users.route.js";
+import { Meeting } from "./models/meeting.model.js";
 
 const app = express();
 const server = createServer(app);

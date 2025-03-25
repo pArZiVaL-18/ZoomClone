@@ -1,66 +1,60 @@
-// import React from "react";
-// import "./LandingPage.css";
-// import { Link, useNavigate } from "react-router";
-
-// export default function LandingPage() {
-//     const Router = useNavigate();
-//     return (
-//         <div className="landingPageContainer">
-//             <nav>
-//                 <div className="navHeader">
-//                     <h2>ROVAMS</h2>
-//                 </div>
-//                 <div className="navList">
-//                     <p
-//                         onClick={() => {
-//                             Router("/asdflkj4356211");
-//                         }}
-//                     >
-//                         Join as guest
-//                     </p>
-//                     <p
-//                         onClick={() => {
-//                             Router("/auth");
-//                         }}
-//                     >
-//                         Register
-//                     </p>
-//                     <div
-//                         onClick={() => {
-//                             Router("/auth");
-//                         }}
-//                         role="button"
-//                     >
-//                         <p>Login</p>
-//                     </div>
-//                 </div>
-//             </nav>
-
-//             <div className="landingMainContainer">
-//                 <div>
-//                     <h1>
-//                         <span style={{ color: "#FF9839" }}>Connect</span> With
-//                         your Loved Ones
-//                     </h1>
-//                     <p>Cover a distance by ROVAMS</p>
-//                     <div role="button">
-//                         <Link to={"/auth"}>Get started</Link>
-//                     </div>
-//                 </div>
-//                 <div>
-//                     <img src="/mobile.png" alt="mobile image" />
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
 import React from "react";
 import { useNavigate } from "react-router";
 import "./LandingPage.css";
 
 export default function LandingPage() {
     const navigate = useNavigate();
+
+    const services = [
+        {
+            icon: "video-conference",
+            title: "Video Conferencing",
+            description:
+                "High-quality video meetings with advanced features, supporting up to 100 participants with crystal-clear audio and adaptive screen sharing.",
+            features: [
+                "HD Video Quality",
+                "Group Meetings",
+                "Screen Sharing",
+                "Virtual Backgrounds",
+            ],
+        },
+        {
+            icon: "collaboration",
+            title: "Team Collaboration",
+            description:
+                "Seamless collaboration tools that transform remote work, including real-time document editing and integrated project management.",
+            features: [
+                "Shared Workspaces",
+                "Real-time Editing",
+                "Task Management",
+                "File Sharing",
+            ],
+        },
+        {
+            icon: "security",
+            title: "Enterprise Security",
+            description:
+                "Advanced security protocols ensuring your communication remains private, secure, and compliant with global standards.",
+            features: [
+                "End-to-End Encryption",
+                "Multi-Factor Authentication",
+                "Compliance Reporting",
+                "Secure Data Storage",
+            ],
+        },
+        {
+            icon: "analytics",
+            title: "Meeting Intelligence",
+            description:
+                "Comprehensive analytics and insights to measure meeting effectiveness, participant engagement, and team productivity.",
+            features: [
+                "Participation Tracking",
+                "Performance Metrics",
+                "Engagement Scoring",
+                "Customizable Reports",
+            ],
+        },
+    ];
 
     return (
         <div className="landing-container">
@@ -74,29 +68,37 @@ export default function LandingPage() {
                     <nav className="nav-menu">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="#home">Home</a>
                             </li>
                             <li>
-                                <a href="#">About us</a>
+                                <a href="#about">About us</a>
                             </li>
                             <li>
-                                <a href="#">Services</a>
+                                <a href="#services">Services</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
+                                <a href="#blog">Blog</a>
                             </li>
                         </ul>
                     </nav>
 
-                    <button
-                        className="sign-up-btn"
-                        onClick={() => navigate("/auth")}
-                    >
-                        Sign up
-                    </button>
+                    <div className="authButtons">
+                        <button
+                            className="sign-up-btn"
+                            onClick={() => navigate("/auth")}
+                        >
+                            Register
+                        </button>
+                        <button
+                            className="sign-up-btn"
+                            onClick={() => navigate("/auth")}
+                        >
+                            Login
+                        </button>
+                    </div>
                 </header>
 
-                <main className="landing-content">
+                <main className="landing-content" id="home">
                     <div className="content-left">
                         <h2>
                             VIRTUAL <span>MEETINGS</span>
@@ -113,9 +115,9 @@ export default function LandingPage() {
 
                         <button
                             className="cta-button"
-                            onClick={() => navigate("/meetings")}
+                            onClick={() => navigate("/meeting")}
                         >
-                            READ MORE
+                            Join as guest
                         </button>
                     </div>
 
@@ -128,6 +130,105 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </main>
+
+                {/* About Us Section */}
+                <section className="about-us-section" id="about">
+                    <div className="section-container">
+                        <h2 className="section-title">
+                            About <span>ROVAMS</span>
+                        </h2>
+                        <div className="about-content">
+                            <div className="about-image">
+                                <img
+                                    src="/team-image.jpg"
+                                    alt="ROVAMS Team"
+                                    className="team-image"
+                                />
+                            </div>
+                            <div className="about-details">
+                                <div className="about-description">
+                                    <h3>Who We Are</h3>
+                                    <p>
+                                        ROVAMS is a pioneering virtual
+                                        communication platform dedicated to
+                                        transforming how teams connect and
+                                        collaborate across distances. We believe
+                                        that geographical boundaries should
+                                        never limit professional interaction.
+                                    </p>
+                                </div>
+                                <div className="about-core-values">
+                                    <h3>Our Core Values</h3>
+                                    <ul>
+                                        <li>
+                                            <strong>Innovation:</strong>{" "}
+                                            Continuously pushing the boundaries
+                                            of virtual communication technology
+                                        </li>
+                                        <li>
+                                            <strong>Security:</strong> Ensuring
+                                            top-tier protection for every
+                                            interaction
+                                        </li>
+                                        <li>
+                                            <strong>Accessibility:</strong>{" "}
+                                            Making professional connections
+                                            seamless and intuitive
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="about-mission">
+                                    <h3>Our Mission</h3>
+                                    <p>
+                                        To empower global teams with
+                                        cutting-edge communication tools that
+                                        bridge distances, foster collaboration,
+                                        and enhance productivity.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Services Section */}
+                <section className="services-section" id="services">
+                    <div className="section-container">
+                        <h2 className="section-title">
+                            Our <span>Services</span>
+                        </h2>
+                        <div className="services-grid">
+                            {services.map((service, index) => (
+                                <div key={index} className="service-card">
+                                    <div className="service-icon">
+                                        <div
+                                            className={`icon ${service.icon}`}
+                                        ></div>
+                                    </div>
+                                    <h3>{service.title}</h3>
+                                    <p className="service-description">
+                                        {service.description}
+                                    </p>
+                                    <div className="service-features">
+                                        <h4>Key Features:</h4>
+                                        <ul>
+                                            {service.features.map(
+                                                (feature, featureIndex) => (
+                                                    <li key={featureIndex}>
+                                                        {feature}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <a href="#" className="service-learn-more">
+                                        Learn More
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     );

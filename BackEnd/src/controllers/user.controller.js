@@ -57,6 +57,8 @@ const register = async (req, res) => {
             password: hashedPassword,
         });
 
+        console.log("User schema paths:", User.schema.paths);
+
         await newUser.save();
         res.status(httpStatus.CREATED).json({ message: `User Registered` });
     } catch (e) {
@@ -77,7 +79,7 @@ const getUserHistory = async (req, res) => {
 };
 
 const addToHistory = async (req, res) => {
-    const { token, meeting_code } = req.body;
+    const { token, meeting_code, startTime } = req.body;
 
     try {
         const user = await User.findOne({ token: token });
@@ -85,6 +87,7 @@ const addToHistory = async (req, res) => {
         const newMeeting = new Meeting({
             user_id: user.username,
             meetingCode: meeting_code,
+            startTime: startTime,
         });
 
         await newMeeting.save();
@@ -97,4 +100,37 @@ const addToHistory = async (req, res) => {
     }
 };
 
-export { login, register, getUserHistory, addToHistory };
+const markUserAsAttended = async (req, res) => {
+    const { meetingCode, user_id } = req.body;
+
+    if (!meetingCode || !user_id) {
+        return res
+            .status(400)
+            .json({ message: "Meeting code and user ID are required" });
+    }
+
+    try {
+        // ✅ Find existing meeting by meetingCode
+        let meeting = await Meeting.findOne({ meetingCode });
+
+        if (!meeting) {
+            return res.status(404).json({ message: "Meeting not found" });
+        }
+
+        // ✅ Add user to attendedUsers only if not already present
+        if (!meeting.attendedUsers.includes(user_id)) {
+            meeting.attendedUsers.push(user_id);
+            await meeting.save();
+        }
+
+        res.status(httpStatus.OK).json({
+            message: "User marked as attended",
+            meeting,
+        });
+    } catch (error) {
+        console.error("Error updating attended users:", error);
+        res.status(500).json({ message: "Server error", error });
+    }
+};
+
+export { login, register, getUserHistory, addToHistory, markUserAsAttended };

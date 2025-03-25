@@ -51,30 +51,33 @@ export default function History() {
             {meetings.length !== 0 ? (
                 meetings.map((e, i) => {
                     return (
-                        <>
-                            <Card key={i} variant="outlined">
-                                <CardContent>
-                                    <Typography
-                                        sx={{ fontSize: 14 }}
-                                        color="text.secondary"
-                                        gutterBottom
-                                    >
-                                        Code: {e.meetingCode}
-                                    </Typography>
+                        <Card key={i} variant="outlined">
+                            <CardContent>
+                                <Typography
+                                    sx={{ fontSize: 14 }}
+                                    color="text.secondary"
+                                    gutterBottom
+                                >
+                                    Code: {e.meetingCode}
+                                </Typography>
 
-                                    <Typography
-                                        sx={{ mb: 1.5 }}
-                                        color="text.secondary"
-                                    >
-                                        Date: {formatDate(e.date)}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </>
+                                <Typography
+                                    sx={{ mb: 1.5 }}
+                                    color="text.secondary"
+                                >
+                                    Date: {formatDate(e.date)}
+                                </Typography>
+
+                                <Typography color="text.secondary">
+                                    Start Time: {e.startTime}
+                                    {console.log(e.startTime)}
+                                </Typography>
+                            </CardContent>
+                        </Card>
                     );
                 })
             ) : (
-                <></>
+                <Typography>No meeting history available.</Typography>
             )}
         </div>
     );

@@ -259,6 +259,13 @@ export default function Authentication() {
                 await handleLogin(username, email, password);
             }
             if (formState === 1) {
+                console.log(
+                    "Sending to handleRegister:",
+                    name,
+                    username,
+                    email,
+                    password
+                ); // Debugging
                 const result = await handleRegister(
                     name,
                     username,

@@ -1,79 +1,27 @@
-/* .landingPageContainer {
-    width: 100vw;
-    height: 100vh;
-    background: url("/background.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-}
-
-.landingPageContainer nav {
-    padding-inline: 1.2rem;
-    padding-block: 1.6rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.landingPageContainer nav h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-
-.landingPageContainer nav .navList {
-    display: flex;
-    gap: 1.6rem;
-    cursor: pointer;
-}
-
-.landingMainContainer {
-    display: flex;
-    justify-content: space-between;
-    padding-inline: 3rem;
-    height: 70vh;
-    align-items: center;
-}
-
-.landingMainContainer > div:nth-child(1) {
-    font-size: 2rem;
-}
-
-.landingMainContainer > div:nth-child(1) div[role="button"] {
-    background: #d97500;
-    width: fit-content;
-    padding: 1rem;
-    border-radius: 20px;
-    margin-top: 1.7rem;
-}
-
-.landingMainContainer > div:nth-child(1) div[role="button"] a {
-    text-decoration: none;
-    color: white;
-}
-
-.landingMainContainer > div:nth-child(2) img {
-    height: 70vh;
-    width: auto;
-} */
-
-
-
 .landing-container {
     width: 100%;
-    min-height: 100vh;
     background-color: white;
     font-family: 'Segoe UI', Arial, sans-serif;
-    max-width: 1440px;
     margin: 0 auto;
 }
+html {
+    scroll-behavior: smooth;
+}
 
-/* Header Styles */
+/* Header Styles - Fixed Navbar */
 .landing-header {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 20px 40px;
+    padding: 25px 40px;
     background-color: white;
     border-bottom: 1px solid #f0f0f0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .logo {
@@ -123,6 +71,8 @@
     padding: 8px 25px;
     font-size: 14px;
     font-weight: 500;
+    margin-left: 5px;
+    margin-right: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -137,6 +87,7 @@
     padding: 60px 40px;
     max-width: 1200px;
     margin: 0 auto;
+    height: 70vh;
 }
 
 .content-left {
@@ -193,24 +144,6 @@
 }
 
 /* Right Content - Illustration */
-/* .content-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.illustration {
-    width: 100%;
-    max-width: 450px;
-}
-
-.illustration img {
-    width: 100%;
-    height: auto;
-    display: block;
-} */
-/* Right Content - Illustration */
 .content-right {
     flex: 1;
     display: flex;
@@ -231,6 +164,286 @@
     height: auto;
     border-radius: 10px; /* Soft edges */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* About us styling */
+.about-us-section {
+    background-color: #f8f9fa;
+    padding: 50px 80px;
+}
+
+.section-title {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 2rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 0 0 40%;
+}
+
+.team-image {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-image:hover {
+    transform: scale(1.03);
+}
+
+.about-details {
+    flex: 1;
+}
+
+.about-details h3 {
+    color: #0077B6;
+    border-bottom: 2px solid #0077B6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.about-description p,
+.about-mission p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-core-values ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-core-values li {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.about-core-values li:hover {
+    transform: translateX(10px);
+}
+
+.about-core-values li strong {
+    color: #0077B6;
+    margin-right: 10px;
+}
+
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 500px;
+        margin-bottom: 30px;
+    }
+
+    .about-details h3 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-content {
+        gap: 20px;
+    }
+
+    .about-image {
+        max-width: 100%;
+    }
+}
+
+/* Services Section */
+.services-section {
+    background-color: #ffffff;
+    padding: 50px 80px;
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.service-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.service-icon .icon {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(20%) brightness(90%);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon .icon {
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    color: #0077B6;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.service-description {
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.service-features {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.service-features h4 {
+    color: #0077B6;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.service-features ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.service-features li {
+    padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #333;
+}
+
+.service-features li:last-child {
+    border-bottom: none;
+}
+
+.service-learn-more {
+    display: inline-block;
+    background-color: #0077B6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+.service-learn-more:hover {
+    background-color: #005b8c;
+}
+
+/* Responsive Designs */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Example icon styles (you would replace these with actual icon backgrounds) */
+.video-conference {
+    background-image: url('../assets/video-conference.png');
+}
+
+.collaboration {
+    background-image: url('../assets/digital-collaboration.png');
+}
+
+.security {
+    background-image: url('../assets/shield.png');
+}
+
+.analytics {
+    background-image: url('../assets/analytical-skill.png');
+}
+
+/* Responsive adjustments for fixed navbar */
+@media (max-width: 980px) {
+    .landing-header {
+        padding: 15px 20px;
+    }
+
+    .landing-inner {
+        padding-top: 70px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .landing-header {
+        padding: 10px 15px;
+    }
+
+    .landing-inner {
+        padding-top: 60px;
+    }
 }
 
 /* Responsive Design */
@@ -299,4 +512,3 @@
         font-size: 16px;
     }
 }
-/*New CSS for landing page from claude---------------------------------------------------*/

@@ -67,11 +67,12 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const addToUserHistory = async (meetingCode) => {
+    const addToUserHistory = async (meetingCode, startTime) => {
         try {
             let request = await client.post("/add_to_activity", {
                 token: localStorage.getItem("token"),
                 meeting_code: meetingCode,
+                startTime: startTime,
             });
             return request;
         } catch (e) {
