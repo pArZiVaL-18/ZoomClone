@@ -7,6 +7,8 @@ import HomeComponent from "./pages/home.jsx";
 import History from "./pages/history.jsx";
 import VideoMeetComponent from "./pages/VideoMeet.jsx";
 import User from "./pages/User.jsx";
+import LearnMorePage from "./pages/LearnMorePage.jsx";
+import HelpAndSupport from "./pages/HelpAndSupport.jsx";
 
 function App() {
     return (
@@ -23,6 +25,9 @@ function App() {
                         <Route path="/home" element={<HomeComponent />} />
 
                         <Route path="/history" element={<History />} />
+
+                        <Route path="/learn-more" element={<LearnMorePage />} />
+                        <Route path="/support" element={<HelpAndSupport />} />
 
                         <Route path="/:url" element={<VideoMeetComponent />} />
                     </Routes>

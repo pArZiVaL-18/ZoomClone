@@ -1,0 +1,154 @@
+/* history.css */
+.history-container {
+    padding: 24px;
+    font-family: "Inter", "system-ui", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.history-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.history-header h1 span {
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+.new-meeting-btn {
+    background-color: #2563eb !important;
+    color: white !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    margin-right: 16px !important;
+}
+
+.history-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-control {
+    min-width: 150px;
+    background-color: white;
+}
+
+.export-button {
+    text-transform: none !important;
+    border-radius: 8px !important;
+}
+
+.history-table {
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.history-table .MuiTableHead-root {
+    background-color: #f5f7fa;
+}
+
+.history-table .MuiTableCell-head {
+    font-weight: 600;
+    color: #374151;
+}
+
+.history-table .MuiTableCell-body {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+.meeting-code {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #2563eb;
+}
+
+.meeting-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    font-weight: 500;
+}
+
+.meeting-type.incoming {
+    color: #2e7d32;
+    background-color: rgba(46, 125, 50, 0.1);
+}
+
+.meeting-type.outgoing {
+    color: #d32f2f;
+    background-color: rgba(211, 47, 47, 0.1);
+}
+
+@media (max-width: 768px) {
+    .history-container {
+        padding: 16px;
+    }
+
+    .history-controls {
+        flex-direction: column;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .control-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .header-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -140,6 +140,7 @@
 
 import React, { useContext, useState } from "react";
 import withAuth from "../utils/withAuth";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
     Button, 
@@ -156,6 +157,8 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { AuthContext } from "../contexts/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 import "./home.css";
+import { Link } from "react-router-dom";
+// import HelpAndSupport from './HelpAndSupport.jsx';
 
 function HomeComponent() {
     const navigate = useNavigate();
@@ -170,20 +173,19 @@ function HomeComponent() {
         navigate("/");
     };
 
-    
     const navActions = [
         {
             icon: <RestoreIcon />,
             tooltip: "Meeting History",
             onClick: () => navigate("/history"),
-            path: "/history"
+            path: "/history",
         },
         {
             icon: <HelpOutlineIcon />,
             tooltip: "Help & Support",
-            onClick: () => navigate("/home"),
-            path: "/support"
-        }
+            onClick: () => navigate("/support"),
+            path: "/support",
+        },
     ];
 
     let handleJoinVideoCall = async () => {
@@ -210,23 +212,27 @@ function HomeComponent() {
 
     return (
         <div className="meetPage">
-                        <nav className="navBar">
+            <nav className="navBar">
                 <div className="logoContainer">
-                    <div className="logoSection">
-                        <h2>ROVAMS Connect</h2>
-                        <span>Video Collaboration Platform</span>
+                    <div className="logo">
+                        <img src="/image.png" alt="Logo" />
+                        <h1>ROVAMS Connect</h1>
+                        {/* <span>Video Collaboration Platform</span> */}
                     </div>
                 </div>
 
                 <div className="userControls">
                     <div className="navbarActions">
                         {navActions.map((action) => (
-                            <Tooltip key={action.tooltip} title={action.tooltip}>
-                                <div 
+                            <Tooltip
+                                key={action.tooltip}
+                                title={action.tooltip}
+                            >
+                                <div
                                     className={`navActionButton ${
-                                        location.pathname === action.path 
-                                            ? 'activeAction' 
-                                            : ''
+                                        location.pathname === action.path
+                                            ? "activeAction"
+                                            : ""
                                     }`}
                                     onClick={action.onClick}
                                 >
@@ -236,20 +242,20 @@ function HomeComponent() {
                         ))}
                     </div>
 
-                    <div className="navProfile" onClick={() => navigate("/user")}>
-                        <Avatar 
-                            alt={user2?.name || "User"} 
-                            src={user2?.avatar} 
+                    <div
+                        className="navProfile"
+                        onClick={() => navigate("/user")}
+                    >
+                        <Avatar
+                            alt={user2?.name || "User"}
+                            src={user2?.avatar}
                             sx={{ width: 36, height: 36 }}
                         />
                         <span>{user2?.name || "User"}</span>
                     </div>
 
                     <Tooltip title="Logout">
-                        <IconButton 
-                            color="primary" 
-                            onClick={handleLogout}
-                        >
+                        <IconButton color="primary" onClick={handleLogout}>
                             <LogoutIcon />
                         </IconButton>
                     </Tooltip>
@@ -260,8 +266,9 @@ function HomeComponent() {
                 <div className="leftContent">
                     <h1>Seamless Video Meetings, Anywhere</h1>
                     <p>
-                        Connect, collaborate, and celebrate with ROVAMS Connect - 
-                        bringing teams and loved ones together with a single click.
+                        Connect, collaborate, and celebrate with ROVAMS Connect
+                        - bringing teams and loved ones together with a single
+                        click.
                     </p>
 
                     <div className="actionButtons">
@@ -301,7 +308,9 @@ function HomeComponent() {
                     </div>
 
                     <div className="learnMoreSection">
-                        <a href="#">Learn more about ROVAMS Connect</a>
+                        <Link to="/learn-more">
+                            Learn more about ROVAMS Connect
+                        </Link>
                     </div>
                 </div>
 
@@ -309,8 +318,8 @@ function HomeComponent() {
                     <div className="infoCard">
                         <h2>Create Instant Meeting Links</h2>
                         <p>
-                            Click <strong>Start New Meeting</strong> to generate 
-                            a unique link you can instantly share with your team 
+                            Click <strong>Start New Meeting</strong> to generate
+                            a unique link you can instantly share with your team
                             or friends.
                         </p>
                     </div>

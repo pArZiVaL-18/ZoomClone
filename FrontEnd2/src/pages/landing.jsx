@@ -61,7 +61,7 @@ export default function LandingPage() {
             <div className="landing-inner">
                 <header className="landing-header">
                     <div className="logo">
-                        <img src="/logo.jpg" alt="Logo" />
+                        <img src="/image.png" alt="Logo" />
                         <h1>ROVAMS</h1>
                     </div>
 
@@ -76,9 +76,9 @@ export default function LandingPage() {
                             <li>
                                 <a href="#services">Services</a>
                             </li>
-                            <li>
+                            {/* <li>
                                 <a href="#blog">Blog</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
 
@@ -124,7 +124,7 @@ export default function LandingPage() {
                     <div className="content-right">
                         <div className="illustration">
                             <img
-                                src="/back.jpg"
+                                src="/home.jpg"
                                 alt="Virtual meeting illustration"
                             />
                         </div>
@@ -140,7 +140,7 @@ export default function LandingPage() {
                         <div className="about-content">
                             <div className="about-image">
                                 <img
-                                    src="/team-image.jpg"
+                                    src="/back.jpg"
                                     alt="ROVAMS Team"
                                     className="team-image"
                                 />
@@ -221,9 +221,9 @@ export default function LandingPage() {
                                             )}
                                         </ul>
                                     </div>
-                                    <a href="#" className="service-learn-more">
+                                    {/* <a href="#" className="service-learn-more">
                                         Learn More
-                                    </a>
+                                    </a> */}
                                 </div>
                             ))}
                         </div>
