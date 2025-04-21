@@ -115,7 +115,7 @@ export default function LandingPage() {
 
                         <button
                             className="cta-button"
-                            onClick={() => navigate("/meeting")}
+                            onClick={() => navigate("/guest")}
                         >
                             Join as guest
                         </button>

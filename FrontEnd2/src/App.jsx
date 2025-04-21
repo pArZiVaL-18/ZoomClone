@@ -9,6 +9,7 @@ import VideoMeetComponent from "./pages/VideoMeet.jsx";
 import User from "./pages/User.jsx";
 import LearnMorePage from "./pages/LearnMorePage.jsx";
 import HelpAndSupport from "./pages/HelpAndSupport.jsx";
+import Guest from "./pages/Guest.jsx";
 
 function App() {
     return (
@@ -27,7 +28,10 @@ function App() {
                         <Route path="/history" element={<History />} />
 
                         <Route path="/learn-more" element={<LearnMorePage />} />
+
                         <Route path="/support" element={<HelpAndSupport />} />
+
+                        <Route path="/guest" element={<Guest />} />
 
                         <Route path="/:url" element={<VideoMeetComponent />} />
                     </Routes>

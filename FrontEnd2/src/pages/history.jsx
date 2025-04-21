@@ -127,7 +127,7 @@ function History() {
     const [meetings, setMeetings] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [filter, setFilter] = useState("all");
-
+    const username = localStorage.getItem("username");
     useEffect(() => {
         const fetchHistory = async () => {
             try {
@@ -141,6 +141,7 @@ function History() {
         fetchHistory();
     }, []);
 
+    console.log(meetings);
     const filteredMeetings = meetings.filter((meeting) => {
         const matchesSearch = meeting.meetingCode
             .toLowerCase()

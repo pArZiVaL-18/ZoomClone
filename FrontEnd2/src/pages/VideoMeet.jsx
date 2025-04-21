@@ -55,7 +55,9 @@ export default function VideoMeetComponent() {
     // UI State
     const [showModal, setModal] = useState(true);
     const [askForUsername, setAskForUsername] = useState(true);
-    const [username, setUsername] = useState("");
+    // const [username, setUsername] = useState("");
+
+    const username = localStorage.getItem("username");
 
     // Chat State
     const [messages, setMessages] = useState([]);
@@ -367,9 +369,16 @@ export default function VideoMeetComponent() {
 
             // Handle users leaving
             socketRef.current.on("user-left", (id) => {
-                setVideos((videos) =>
-                    videos.filter((video) => video.socketId !== id)
-                );
+                // setVideos((videos) =>
+                //     videos.filter((video) => video.socketId !== id)
+                // );
+                setVideos((videos) => {
+                    const updated = videos.filter(
+                        (video) => video.socketId !== id
+                    );
+                    videoRef.current = updated; // ✅ keep the ref in sync
+                    return updated;
+                });
             });
 
             // Handle new users joining
@@ -559,6 +568,17 @@ export default function VideoMeetComponent() {
                 let tracks = localVideoref.current.srcObject.getTracks();
                 tracks.forEach((track) => track.stop());
             }
+
+            // Close all peer connections
+            Object.values(connections).forEach((conn) => conn.close());
+            Object.keys(connections).forEach((key) => delete connections[key]);
+
+            // Clear remote video UI
+            setVideos([]);
+            videoRef.current = [];
+
+            // Disconnect socket
+            socketRef.current?.disconnect();
         } catch (e) {
             console.log("Error stopping tracks on end call:", e);
         }
@@ -748,6 +768,7 @@ export default function VideoMeetComponent() {
                     }`}
                 >
                     <video ref={localVideoref} autoPlay muted></video>
+                    <div className="overlay-username">{username}</div>
                 </div>
 
                 {/* Remote Videos */}

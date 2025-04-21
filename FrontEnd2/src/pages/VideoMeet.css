@@ -24,6 +24,17 @@
     font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.overlay-username {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+ }
+
 .video-grid {
     height: 86vh;
     display: grid;
@@ -32,6 +43,16 @@
     padding: 1rem;
     flex-grow: 1;
 }
+
+/* .video-grid {
+    height: 86vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    flex-grow: 1;
+} */
+
 
 .video-container {
     background-color: rgba(31, 41, 55, 0.7);
@@ -49,8 +70,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scaleX(-1); /* Flip horizontally */
+}
+/* .localVideo {
+    
 }
 
+.remoteVideo {
+    transform: scaleX(-1);;  Don’t flip the remote video 
+} */
 .controls-container {
     background-color: rgba(31, 41, 55, 0.9);
     padding: 1rem;
