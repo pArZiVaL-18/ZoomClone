@@ -83,8 +83,13 @@
 //         </div>
 //     );
 // }
+
+
 // history.jsx
 // history.jsx
+
+
+
 import React, { useContext, useEffect, useState } from "react";
 import {
     Button,
@@ -132,7 +137,8 @@ function History() {
         const fetchHistory = async () => {
             try {
                 const history = await getHistoryOfUser();
-                setMeetings(history || []);
+                
+                setMeetings(history.length !== 0  ? history : []);
             } catch (error) {
                 console.error("Error fetching history:", error);
             }
@@ -141,8 +147,11 @@ function History() {
         fetchHistory();
     }, []);
 
+    console.log("meetings:", meetings, typeof meetings);
+
     console.log(meetings);
-    const filteredMeetings = meetings.filter((meeting) => {
+    
+    const filteredMeetings = meetings?.filter((meeting) => {
         const matchesSearch = meeting.meetingCode
             .toLowerCase()
             .includes(searchTerm.toLowerCase());
@@ -262,7 +271,7 @@ function History() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredMeetings.length > 0 ? (
+                        {filteredMeetings.length !== 0 ? (
                             filteredMeetings.map((meeting) => (
                                 <TableRow key={meeting.meetingCode}>
                                     <TableCell>

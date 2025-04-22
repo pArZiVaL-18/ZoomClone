@@ -3,6 +3,7 @@ import { User } from "../models/user.model.js";
 import bcrypt, { hash } from "bcrypt";
 import crypto from "crypto";
 import { Meeting } from "../models/meeting.model.js";
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 const login = async (req, res) => {
     const { username, email, password } = req.body;
@@ -70,10 +71,13 @@ const getUserHistory = async (req, res) => {
     const { token } = req.query;
 
     try {
-        const user = await User.findOne({ username: token });
+        const user = await User.findOne({ token: token });
+        console.log(user + "hit");
         const meetings = await Meeting.find({ user_id: user.username });
+        console.log(meetings + " hit2");
         res.json(meetings);
     } catch (e) {
+        console.log("hit3");
         res.json({ message: `Something went wrong ${e}` });
     }
 };
