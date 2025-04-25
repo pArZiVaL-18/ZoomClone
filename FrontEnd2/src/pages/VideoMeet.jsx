@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import io from "socket.io-client";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -29,6 +29,7 @@ import styles from "../styles/videoComponent.module.css";
 import "./VideoMeet.css";
 import server from "../enviornment";
 import "./script.js";
+import { AuthContext } from "../contexts/AuthContext";
 
 const server_url = server;
 const peerConfigConnections = {
@@ -66,6 +67,8 @@ export default function VideoMeetComponent() {
     const location = useLocation();
     const navigate = useNavigate();
     const { randomId: stateRandomId } = location.state || {};
+
+    const { saveMeetTime } = useContext(AuthContext);
 
     // Request and check media device permissions
     const getPermissions = async () => {
@@ -322,7 +325,7 @@ export default function VideoMeetComponent() {
             socketRef.current.on("chat-message", addMessage);
 
             // Handle users leaving
-            socketRef.current.on("user-left", (id) => {
+            socketRef.current.on("user-left", (id, duration) => {
                 setVideos((videos) => {
                     const updated = videos.filter(
                         (video) => video.socketId !== id
@@ -332,6 +335,7 @@ export default function VideoMeetComponent() {
                 });
 
                 const username = remoteUsernameMap[id] || "A user";
+                localStorage.setItem("duration", duration);
                 setLeftUser(username + " left the call");
                 setTimeout(() => setLeftUser(null), 2000);
 
@@ -531,7 +535,7 @@ export default function VideoMeetComponent() {
         setScreen(!screen);
     };
 
-    const handleEndCall = () => {
+    const handleEndCall = async () => {
         try {
             if (localVideoref.current?.srcObject) {
                 let tracks = localVideoref.current.srcObject.getTracks();
@@ -551,6 +555,10 @@ export default function VideoMeetComponent() {
             console.log("Error stopping tracks on end call:", e);
         }
 
+        const meetCode = localStorage.getItem("meetCode");
+        const duration = localStorage.getItem("duration");
+        await saveMeetTime(username, meetCode, duration);
+
         setTimeout(() => {
             localStorage.getItem("token") ? navigate("/home") : navigate("/");
         }, 500);
@@ -559,6 +567,7 @@ export default function VideoMeetComponent() {
     // Join meeting
     const connect = () => {
         localStorage.setItem("username", username);
+        // localStorage.setItem("meetCode", meetCode);
         setAskForUsername(false);
         getMedia();
     };

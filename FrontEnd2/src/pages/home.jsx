@@ -48,7 +48,9 @@ function HomeComponent() {
                 hour: "2-digit",
                 minute: "2-digit",
             });
-            await addToUserHistory(meetingCode, startTime);
+            const type = "incoming";
+            await addToUserHistory(meetingCode, startTime, type);
+            localStorage.setItem("meetCode", meetingCode);
             navigate(`/${meetingCode}`);
         }
     };
@@ -60,7 +62,9 @@ function HomeComponent() {
         });
 
         const randomId = uuidv4();
-        await addToUserHistory(randomId, startTime);
+        const type = "outgoing";
+        await addToUserHistory(randomId, startTime, type);
+        localStorage.setItem("meetCode", randomId);
         navigate(`/${randomId}`, { state: { randomId } });
     };
 

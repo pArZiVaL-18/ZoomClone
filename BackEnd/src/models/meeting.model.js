@@ -11,6 +11,8 @@ const meetingSchema = new Schema({
     meetingCode: { type: String, required: true },
     date: { type: Date, default: Date.now, required: true },
     startTime: { type: String, required: true }, // e.g., "14:30"
+    type: { type: String, default: "outgoing" },
+    duration: { type: Number, default: 0 },
     attendees: [{ type: String, required: true }], // Array of user IDs or emails
 });
 

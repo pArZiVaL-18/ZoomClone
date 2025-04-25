@@ -55,11 +55,24 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const saveMeetTime = async (username, meetCode, duration) => {
+        try {
+            let request = await client.post("/save_meet_time", {
+                username: username,
+                meetCode: meetCode,
+                duration: duration,
+            });
+            return request;
+        } catch (err) {
+            throw err;
+        }
+    };
+
     const getHistoryOfUser = async () => {
         try {
             let request = await client.get("/get_all_activity", {
                 params: {
-                    token: localStorage.getItem("token"),
+                    username: localStorage.getItem("username"),
                 },
             });
             return request.data;
@@ -68,12 +81,13 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const addToUserHistory = async (meetingCode, startTime) => {
+    const addToUserHistory = async (meetingCode, startTime, type) => {
         try {
             let request = await client.post("/add_to_activity", {
                 token: localStorage.getItem("token"),
                 meeting_code: meetingCode,
                 startTime: startTime,
+                type: type,
             });
             return request;
         } catch (e) {
@@ -85,6 +99,7 @@ export const AuthProvider = ({ children }) => {
         userData,
         setUserData,
         addToUserHistory,
+        saveMeetTime,
         getHistoryOfUser,
         handleRegister,
         handleLogin,

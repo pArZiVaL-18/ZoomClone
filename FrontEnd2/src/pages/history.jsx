@@ -108,6 +108,7 @@ function History() {
                         <TableRow>
                             <TableCell>Meeting Code</TableCell>
                             <TableCell>Type</TableCell>
+                            <TableCell>Duration</TableCell>
                             <TableCell>Date</TableCell>
                             <TableCell>Start Time</TableCell>
                             <TableCell>Action</TableCell>
@@ -146,6 +147,14 @@ function History() {
                                                   meeting.type.slice(1)
                                                 : "Outgoing"}
                                         </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {meeting.duration
+                                            ? (
+                                                  meeting.duration /
+                                                  (1000 * 60)
+                                              ).toFixed(2) + " min"
+                                            : "---"}
                                     </TableCell>
                                     <TableCell>
                                         {formatDate(meeting.date).split(",")[0]}

@@ -111,7 +111,8 @@ const connectToSocket = (server) => {
                         for (let a = 0; a < connections[key].length; ++a) {
                             io.to(connections[key][a]).emit(
                                 "user-left",
-                                socket.id
+                                socket.id,
+                                diffTime
                             );
                         }
 
