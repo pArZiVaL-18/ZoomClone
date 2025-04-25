@@ -728,7 +728,7 @@ export default function VideoMeetComponent() {
                         ref={localVideoref}
                         autoPlay
                         muted
-                        className={!video.isScreenShare ? "mirror" : ""}
+                        // className={!video.isScreenShare ? "mirror" : ""}
                     ></video>
                     <div className="overlay-username">{username} (You)</div>
                 </div>
@@ -744,7 +744,7 @@ export default function VideoMeetComponent() {
                                 }
                             }}
                             autoPlay
-                            className={!video.isScreenShare ? "mirror" : ""}
+                            // className={!video.isScreenShare ? "mirror" : ""}
                         ></video>
                         <div className="overlay-username">{video.username}</div>
                     </div>
